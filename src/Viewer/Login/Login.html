@@ -12,6 +12,7 @@
     <script src="{{ url_for('static', filename='Login/login.js') }}"></script>
 </head>
 <body>
+
     {% include 'Header/Header.html' %}
     <div class="home-background">
         <div class="login-containers">
@@ -24,7 +25,7 @@
                     <div class="forms">
                         <input
                             class="form-input"
-                            type="e-mail"
+                            type="email"
                             name="email"
                             id="email"
                             onblur="onFocusLoose(this)"

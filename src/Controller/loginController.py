@@ -67,3 +67,5 @@ def registerUser():
         except Exception as error:
             res = json.dumps({"Erro": str(error)})
             return Response(res, mimetype='application/json', status=500)
+
+
