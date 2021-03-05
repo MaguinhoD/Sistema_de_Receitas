@@ -5,11 +5,11 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from src.controller.account.loginController import loginBp
+from src.Controller.loginController import loginBp
 
-from src.model.usuarioModel import db as usuario_db
-from src.model.receitaModel import db as receita_db
-from src.model.IngredienteModel import db as ingrediente_db
+from src.Model.usuarioModel import db as usuario_db
+from src.Model.receitaModel import db as receita_db
+from src.Model.IngredienteModel import db as ingrediente_db
 
 load_dotenv(find_dotenv())
 
