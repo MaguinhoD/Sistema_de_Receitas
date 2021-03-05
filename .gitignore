@@ -6,3 +6,5 @@ __pycache__/
 lib/
 venv/
 /lib/
+/Lib/
+Lib/

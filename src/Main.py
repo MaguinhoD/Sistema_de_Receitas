@@ -11,6 +11,8 @@ from src.Model.usuarioModel import db as usuario_db
 from src.Model.receitaModel import db as receita_db
 from src.Model.IngredienteModel import db as ingrediente_db
 
+from pymongo import MongoClient
+
 load_dotenv(find_dotenv())
 
 try:
