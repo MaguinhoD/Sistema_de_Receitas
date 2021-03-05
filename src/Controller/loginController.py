@@ -6,7 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from src.Model.usuarioModel import Usuario as UserModel
 
-loginBp = Blueprint('account',__name__, url_prefix='/account')
+loginBp = Blueprint('account',__name__, url_prefix='/conta')
 
 @loginBp.route('/login')
 def login():
