@@ -18,7 +18,7 @@ load_dotenv(find_dotenv())
 try:
     template_dir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
     template_dir = os.path.join(template_dir, 'src')
-    template_dir = os.path.join(template_dir, 'view')
+    template_dir = os.path.join(template_dir, 'Viewer')
 
     app = Flask(__name__, template_folder=template_dir, static_folder=template_dir)
 
