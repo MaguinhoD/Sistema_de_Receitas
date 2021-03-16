@@ -1,0 +1,58 @@
+* {
+    font-family: courier,arial,helvetica;
+
+}
+
+.search-background {
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 50px;
+    box-shadow: 0px 2px 2px 1px black;
+    overflow: hidden;
+    background-color: #eef112;
+}
+
+.Bolos-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Carnes-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Aves-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Mar-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Saladas-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Sopas-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Massas-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Bebidas-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Doces-btn {
+    padding: 10px;
+    margin: 20px;
+}
+.Lanches-btn {
+    padding: 10px;
+    margin: 20px;
+}

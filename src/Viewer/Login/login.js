@@ -1,8 +1,3 @@
-window.onload = () => {
-    if (localStorage.getItem('user_id')) {
-        window.location.href = '/dash/';
-    }
-}
 
 function sendLogin() {
     let email = document.getElementById('email');
@@ -19,7 +14,7 @@ function sendLogin() {
     var ajax = new XMLHttpRequest();
 
     // Pega o tipo de requisição: Post e a URL da API
-    ajax.open("POST", "http://127.0.0.1:5000/account/getUser", true);
+    ajax.open("POST", "http://127.0.0.1:5000/getUser", true);
     ajax.setRequestHeader("Content-type", "application/json");
 
     ajax.onload = (e) => {

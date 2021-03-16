@@ -1,14 +1,61 @@
 * {
+    box-sizing: border-box;
     font-family: "Lucida Console", Courier, monospace;
     padding: 0;
     margin: 0;
 }
 
 body{
-    display: flex;
-    flex-direction: column;
+    
     align-items: center;
+    margin: 0;
+    }
+.row {
+    
+        display: flex;
+        flex-wrap: wrap;
+ }
+
+.side {
+    width: 15%;
+    height: 75%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    float: left;
+  }
+
+.right{
+    width: 15%;
+    height: 75%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    float: left;
+  }
+
+.main {
+    width: 70%;
+    height: 75%;
+  
+    
+    float: left;
+  }
+  
+.imagem {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+  }
+
+
+@media screen and (max-width: 300px) {
+    .row{
+        flex-direction: column;
+    }
 }
+
+
+
 
 .home-background {
     max-height: 82vh;
@@ -17,17 +64,19 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: clamp(360px, 75%, 75%);
+    width: clamp(360px, 100%, 100%);
     margin-top: 3px;
-    background-color: #f0e3e3;
+    background-color: #1408c2;
+    
 }
 
 .home-welcome {
-    display: flex;
-    flex-direction: column;
+   display: flex;
     align-items: center;
     justify-content: center;
     width: auto;
+    flex-direction: column;
+    
 }
 
 .home-title {

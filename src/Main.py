@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from src.Controller.loginController import loginBp
+from src.Controller.loginController import accountBp
 
 from src.Model.usuarioModel import db as usuario_db
 from src.Model.receitaModel import db as receita_db
@@ -19,7 +19,7 @@ try:
     template_dir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
     template_dir = os.path.join(template_dir, 'src')
     template_dir = os.path.join(template_dir, 'Viewer')
-
+   
     app = Flask(__name__, template_folder=template_dir, static_folder=template_dir)
 
     _USERNAME = os.getenv('MARIA_USERNAME')
@@ -37,7 +37,7 @@ try:
 
     app.wsgi_app = ProxyFix(app.wsgi_app)
 
-    app.register_blueprint(loginBp)
+    app.register_blueprint(accountBp)
 
 
 except Exception as error:

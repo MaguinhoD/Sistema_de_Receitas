@@ -6,18 +6,18 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from src.Model.usuarioModel import Usuario as UserModel
 
-loginBp = Blueprint('account',__name__, url_prefix='/conta')
+accountBp = Blueprint('account',__name__, url_prefix='/account')
 
-@loginBp.route('/login')
+@accountBp.route('/login')
 def login():
     return render_template('Login/login.html', title='Login')
 
-@loginBp.route('/register')
+@accountBp.route('/register')
 def register():
     return render_template('Register/register.html', title='Cadastre-se')
 
-@loginBp.route('/getUsuario', methods=["POST","GET"])
-def getUsuario():
+@accountBp.route('/getUser', methods=["POST","GET"])
+def getUser():
     try:
 
 
@@ -42,7 +42,7 @@ def getUsuario():
         res = json.dumps({"Erro": str(error)})
         return Response(res, mimetype='application/json', status=500)
 
-@loginBp.route('/registerUser', methods=["POST","GET"])
+@accountBp.route('/registerUser', methods=["POST","GET"])
 def registerUser():
         try:
 
