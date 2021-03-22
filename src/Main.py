@@ -6,6 +6,7 @@ from dotenv import load_dotenv, find_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from src.Controller.loginController import accountBp
+from src.Controller.receitasController import pesquisarBp
 
 from src.Model.usuarioModel import db as usuario_db
 from src.Model.receitaModel import db as receita_db
@@ -38,6 +39,7 @@ try:
     app.wsgi_app = ProxyFix(app.wsgi_app)
 
     app.register_blueprint(accountBp)
+    app.register_blueprint(pesquisarBp)
 
 
 except Exception as error:

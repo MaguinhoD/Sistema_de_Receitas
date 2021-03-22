@@ -9,7 +9,7 @@
 <body>
     <div class="header-background">
         <div class="header-titulo">
-            Teste sistema de receita
+            <a href='/'>Teste sistema de receita</a>
         </div>
 
         <div id="divBusca">
@@ -27,13 +27,13 @@
             </div>
         {% else %}
         <div class="btns">
-            <input class="login-btn" type="button" value="Login" onclick="openForm()"/>
-            <input class="singup-btn" type="button" value="Singup" onclick="window.location.href='/account/register'"/>
+            <input class="login-btn" type="button" value="Login" onclick="openForm();closeForm2()" />
+            <input class="singup-btn" type="button" value="Singup" onclick="openForm2();closeform()" />
     </div>
     
     <div class="form-popup" id="myForm">
         <form action="/action_page.php" class="form-container">
-          <h1>Login</h1>
+          <h1>Login </h1> <br>
       
           <label for="email"><b>Email</b></label>
           <input type="text" placeholder="Enter Email" name="email" required>
@@ -45,6 +45,27 @@
           <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
       </div>
+
+      <div class="form-popup" id="myForm2">
+        <form action="/action_page.php" class="form-container">
+          <h1>Registre-se</h1> <br>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="emailr" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="pswr" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw2" required>
+
+          
+      
+          <button type="submit" class="btn" onclick="sendRegister()">Registrar</button>
+          <button type="submit" class="btn cancel" onclick="closeForm2()">Close</button>
+        </form>
+      </div>
+
         {% endif %}
     </div>
 </body>

@@ -8,6 +8,7 @@ from src.Model.usuarioModel import Usuario as UserModel
 
 accountBp = Blueprint('account',__name__, url_prefix='/account')
 
+
 @accountBp.route('/login')
 def login():
     return render_template('Login/login.html', title='Login')
