@@ -5,10 +5,11 @@ from sqlalchemy.exc import SQLAlchemyError
 
 
 from src.Model.receitaModel import Receita as ReceitaModel
+from src.Model.IngredientedaReceitaModel import IngredienteReceita as IngredienteReceitaModel
 
-pesquisarBp = Blueprint('pesquisar',__name__, url_prefix='/pesquisar')
+receitasBp = Blueprint('receitas',__name__, url_prefix='/receitas')
 
-@pesquisarBp.route('/bolo')
+@receitasBp.route('/bolo')
 def bolo():
     return render_template('Receitas/receitas.html', title='receitas')
     try:
@@ -29,39 +30,48 @@ def bolo():
         return Response(res, mimetype='application/json', status=500)
 
 
-@pesquisarBp.route('/register')
+@receitasBp.route('/register')
 def register():
     return render_template('Register/register.html', title='Cadastre-se')
 
-@pesquisarBp.route('/verReceita', methods=["POST","GET"])
+@receitasBp.route('/verReceita', methods=["POST","GET"])
 def getRecetia():
     return #ver receita
 
     
-@pesquisarBp.route('/registrarReceita', methods=["POST","GET"])
+@receitasBp.route('/cadastrarReceita', methods=["POST","GET"])
 def registrarReceita():
-    try:
-
-        db = SQLAlchemy(current_app)
-
-        obj=request.json
-        newUser=UserModel(**obj)
-
-        with current_app.app_context():
-            db.session.add(newUser)
-            db.session.commit()
-
-        _id = UserModel.query.filter_by(email=obj['email']).first().id
-
-        res = json.dumps({'id':_id})
-        return Response(res,mimetype='application/json',status=200)
-
-    except SQLAlchemyError as error:
-        res = json.dumps({"Erro": str(error.__dict__['orig'])})
-        return Response(res, mimetype='application/json', status=500)
-
-    except Exception as error:
-        res = json.dumps({"Erro": str(error)})
-        return Response(res, mimetype='application/json', status=500)
+    return render_template('CadastrarReceita/cadastrar.html', title='Cadastre uma receita')
 
 
+
+
+
+
+@receitasBp.route("/add", methods=["GET","POST"])
+def add():
+    db = SQLAlchemy(current_app)
+    if request.method == "POST":
+        
+
+        db.session.add({'name':request.form['nome'],'quantidade': request.form['qtd']})
+        db.session.commit()       
+        return redirect(url_for("receitas"))
+#    return render_template("add.html")
+
+@receitasBp.route("/edit/<int:id>", methods=["GET", "POST"])
+def edit(id):
+    ingrediente = Ingrediente.query.get(id)
+    if  request.method == "POST":
+        ingrediente.nome = request.form['nome']
+        ingrediente.qtd = request.form["qtd"]
+        db.session.commit()
+        return redirect(url_for("CRUD"))
+    return render_template("edit.html", ingrediente=ingrediente)
+
+@receitasBp.route("/delete/<int:id>")
+def delete(id):
+        ingrediente = Ingrediente.query.get(id)
+        db.session.delete(ingrediente)
+        db.session.commit()       
+        return redirect(url_for("CRUD"))
