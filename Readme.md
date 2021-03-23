@@ -42,10 +42,10 @@
 - Abre o HeideSQL e configure o Mariadb de acordo com as informações no arquivo .env
 
 MARIA_DATABASE=Receitas                                                                                                                                                          
- MARIA_HOST=127.0.0.1
- MARIA_PORT=3306
- MARIA_USERNAME=root
- MARIA_PASSWORD=123456 '''
+ MARIA_HOST=127.0.0.1                                                                                                                                                             
+ MARIA_PORT=3306                                                                                                                                                                   
+ MARIA_USERNAME=root                                                                                                                                                               
+ MARIA_PASSWORD=123456                                                                                                                                                             
 - A primeira vez em que rodar o código digite:
 
 python app.py init_db
@@ -56,9 +56,9 @@ python app.py
 
 - Assim que aparecer a mensagem, é só acessar o link da aplicação:
 
-''' Serving Flask app "main" (lazy loading)
- Environment: production
- WARNING: This is a development server. Do not use it in a production deployment.
- Use a production WSGI server instead.
- Debug mode: off
- Running on http://127.0.0.1:5000/ (Press CTRL+C to quit) '''
+Serving Flask app "main" (lazy loading)                                                                                                                                                          
+ Environment: production                                                                                                                                                          
+ WARNING: This is a development server. Do not use it in a production deployment.                                                                                                                                                          
+ Use a production WSGI server instead.                                                                                                                                                          
+ Debug mode: off                                                                                                                                                                   
+ Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
