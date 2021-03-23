@@ -1,12 +1,12 @@
-Sistema de Receitas
+#Sistema de Receitas
 
-Aluno
+##Aluno
 Vitor Leandro Amorim
 
-Objetivo
+##Objetivo
 Desenvolver um sistema Web para criação de receitas em Python
 
-Tecnologias
+##Tecnologias
 Mariadb
 Flask
 SQLAlchemy
@@ -14,13 +14,13 @@ Jinja2
 Gunicorn
 HTML5, CSS e Javascript
 
-Configuração
+##Configuração
 
-Requerimentos mínimos
+##Requerimentos mínimos
 Python V3.6 ou >
 Maria Database
 
-Iniciar projeto
+##Iniciar projeto
 
 Clonar e atualizar repositório
 git clone https://github.com/MaguinhoD/Sistema_de_Receitas
@@ -29,15 +29,15 @@ cd Sistema_de_Receita
 git checkout Entrega_1
 git pull
 
-Inicializando ambiente virtual
+##Inicializando ambiente virtual
  python -m venv lib
  lib\Scripts\activate
  
-Instalação das dependências
+##Instalação das dependências
 
 pip install -r requisitos.txt
 
-Configurando ambiente
+##Configurando ambiente
 Abre o HeideSQL e configure o Mariadb de acordo com as informações no arquivo .env
 
 MARIA_DATABASE=Receitas
