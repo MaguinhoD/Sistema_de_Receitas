@@ -3,7 +3,7 @@
 ## Aluno
 Vitor Leandro Amorim
 
-##Objetivo
+## Objetivo
 Desenvolver um sistema Web para criação de receitas em Python
 
 ## Tecnologias
