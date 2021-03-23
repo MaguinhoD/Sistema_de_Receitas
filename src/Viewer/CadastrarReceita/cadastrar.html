@@ -6,6 +6,8 @@
     
     <!-- CSS -->
     <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CadastrarReceita/cadastrar.css') }}">
+    <script src="{{ url_for('static', filename='CadastrarReceita/cadastrar.js') }}"></script>
     
     <!-- Título da página (aparece na aba) -->
     <title>Seu Caderno de Receitas</title>
@@ -44,26 +46,33 @@
             {% endfor %}
             </tbody>
     </div>
-        <form action="http://127.0.0.1:5000/receitas/add" class="container" method="POST">
+        
             <div class="row">
                 <div class="col-md-6">
                     <input type="text" name="nome" id="nome" placeholder="Nome do Ingrediente" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <input type="text" name="qtd" id="qtd" placeholder="Quantidade do Ingrediente" class="form-control">
+                    <input type="Integer" name="qtd" id="qtd" placeholder="Quantidade do Ingrediente" class="form-control">
                 </div>
             </div>
         <br>
             <div class="col-xs-12">
-                <button type="submit" class="btn btn-block btn-sucess">Adicionar</button>
+                
+                <input class="btn" type="button" value="Adicionar" onclick="addIngrediente()">
             </div>
-        </form>
+       
         <section id="modo de preparo">
         <div>
             <h2 stile="text-align:center;">Modo de Preparo</h2>
         </div>
         <div>
             <textarea rows="6" style="width: 40em" id="mod_pre_box" name="mod_pre_box"></textarea>
+        </div>
+
+        <div class="col-xs-12">
+
+            <input class="btn" type="button" value="Login" onclick="sendReceita()">
+            
         </div>
         </section>
    </div>

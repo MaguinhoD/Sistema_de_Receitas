@@ -37,7 +37,7 @@ def getUser():
 
     except SQLAlchemyError as error:
         res = json.dumps({"Erro": str(error.__dict__['orig'])})
-        return Response(res, mimetype='application/json', status=500)b
+        return Response(res, mimetype='application/json', status=500)
 
     except Exception as error:
         res = json.dumps({"Erro": str(error)})
