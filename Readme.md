@@ -41,7 +41,7 @@
 
 - Abre o HeideSQL e configure o Mariadb de acordo com as informações no arquivo .env
 
-''' MARIA_DATABASE=Receitas
+MARIA_DATABASE=Receitas                                                                                                                                                          
  MARIA_HOST=127.0.0.1
  MARIA_PORT=3306
  MARIA_USERNAME=root
