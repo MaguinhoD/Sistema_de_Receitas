@@ -9,9 +9,15 @@
 <body>
     <div class="header-background">
         <div class="header-titulo">
-            <a href='/'>Teste sistema de receita</a>
+            <a href='/'>Sistema de receita</a>
         </div>
 
+        <div class="btns">
+            <input class="btn" type="button" value="DashBoard" onclick="window.location.href='/'" />
+            <input class="btn" type="button" value="Receitas" onclick="window.location.href='/receitas'" />
+            <input class="btn" type="button" value="Ingredientes" onclick="window.location.href='/ingredientes'" />
+            
+        </div>
         <div id="divBusca">
             <img src="searchicon.png" alt="Buscar..."/>
             <input type="text" id="txtBusca" placeholder="Buscar..."/>
@@ -19,54 +25,12 @@
           </div>
 
 
-        {% if data and data.logado %}
-            <div class="btns">
-                <input class="logout-btn" type="button" value="DashBoard" onclick="dash()" />
-                <input class="logout-btn" type="button" value="Logout" onclick="logout()" />
                 
-            </div>
-        {% else %}
-        <div class="btns">
-            <input class="login-btn" type="button" value="Login" onclick="openForm();closeForm2()" />
-            <input class="singup-btn" type="button" value="Singup" onclick="openForm2();closeform()" />
+        
+       
     </div>
     
-    <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
-          <h1>Login </h1> <br>
-      
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit" class="btn" onclick="sendLogin()">Login</button>
-          <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-      </div>
-
-      <div class="form-popup" id="myForm2">
-        <form action="/action_page.php" class="form-container">
-          <h1>Registre-se</h1> <br>
-      
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="emailr" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="pswr" required>
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw2" required>
-
-          
-      
-          <button type="submit" class="btn" onclick="sendRegister()">Registrar</button>
-          <button type="submit" class="btn cancel" onclick="closeForm2()">Close</button>
-        </form>
-      </div>
-
-        {% endif %}
+        
     </div>
 </body>
 </html>

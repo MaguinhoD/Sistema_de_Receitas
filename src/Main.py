@@ -5,17 +5,19 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from src.Controller.loginController import accountBp
-from src.Controller.receitasController import receitasBp
 
-from src.Model.usuarioModel import db as usuario_db
+from src.Controller.receitasController import receitabp, get_recipes
+
+from src.Controller.ingredientesController import ingredientebp, get_ingredients
+
+
 from src.Model.receitaModel import db as receita_db
 from src.Model.IngredienteModel import db as ingrediente_db
 from src.Model.IngredientedaReceitaModel import db as ingredientereceita_db
 
-from pymongo import MongoClient
 
-load_dotenv(find_dotenv())
+
+load_dotenv(find_dotenv()) 
 
 try:
     template_dir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -33,15 +35,16 @@ try:
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{_USERNAME}:{_PASSWORD}@{_HOST}:{_PORT}/{_DATABASE}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-    usuario_db.init_app(app)
+    
     receita_db.init_app(app)
     ingrediente_db.init_app(app)
     ingredientereceita_db.init_app(app)
 
     app.wsgi_app = ProxyFix(app.wsgi_app)
 
-    app.register_blueprint(accountBp)
-    app.register_blueprint(receitasBp)
+    
+    app.register_blueprint(receitabp)
+    app.register_blueprint(ingredientebp)
 
 
 except Exception as error:
@@ -58,7 +61,7 @@ def init_database(appFlask):
         pass
 
     with appFlask.app_context():
-        usuario_db.create_all()
+        
         receita_db.create_all()
         ingrediente_db.create_all()
         ingredientereceita_db.create_all()
@@ -66,5 +69,14 @@ def init_database(appFlask):
 
 @app.route('/')
 def index():
-    return render_template('Home/home.html', title='Home')
+    try:
+        ingredients = get_ingredients()
+        recipes = get_recipes()
+    except Exception as error:
+        print('error', error)
+        ingredients = []
+        recipes = []
+    data = {'ingredients': ingredients, 'recipes': recipes}
+    print(data)
+    return render_template('dashboard/dashboard.html', title='Dashboard', data=data)
 

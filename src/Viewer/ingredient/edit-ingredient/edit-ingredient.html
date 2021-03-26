@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    {% block css %}
+        <link rel="stylesheet" type="text/css"
+              href="{{ url_for('static', filename='ingredient/edit-ingredient/edit-ingredient.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% include 'header/header.html' %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-12" style="display: flex; align-items: center;">
+            <a type="button" style="margin-right: 1rem;" href="{{ url_for('ingrediente.index') }}">Voltar</a>
+            <h1>Editar ingredientes</h1>
+        </div>
+    </div>
+    <form method="PUT">
+        <div class="row">
+            {% for ingredient in data.ingredients %}
+                <div class="col-12" style="display: flex; align-items: center;">
+                    <input type="text" class="form-control" placeholder="Nome do ingrediente" id="ingredient_{{ ingredient.id }}" style="margin: 10px;"
+                           value="{{ ingredient.name }}">
+                    <button type="button" class="button" style="margin-right: 10px;">Remover</button>
+                    <button type="button" class="button submit-button">Editar</button>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</main>
+
+{% include 'footer/footer.html' %}
+</body>
+</html>

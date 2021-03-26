@@ -6,4 +6,3 @@ Werkzeug===1.0.1
 MarkupSafe
 pymysql
 sqlalchemy
-pymongo

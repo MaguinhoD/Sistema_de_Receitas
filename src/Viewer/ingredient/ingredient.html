@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ingredient/ingredient.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% include 'header/header.html' %}
+<div class="teste">
+    {% include 'Search/search.html' %}
+    </div>
+
+<main class="container">
+    <div class="row">
+        <div class="col-12" style="display: flex; align-items: center; justify-content: space-between;">
+            <h1>Meus ingredientes</h1>
+            <a href="{{ url_for('ingrediente.create_ingredients') }}">Adicionar ingredientes</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Criado em</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% if data.ingredients %}
+                    {% for ingredient in data.ingredients %}
+                        <tr>
+                            <td>{{ ingredient.id }}</td>
+                            <td>{{ ingredient.name }}</td>
+                            <td>{{ ingredient.created_at }}</td>
+                        <td>
+                              <a>Remover</a> |
+                            <a href="{{ url_for('ingrediente.update_ingredients') }}">Editar</a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+{% include 'footer/footer.html' %}
+</body>
+</html>

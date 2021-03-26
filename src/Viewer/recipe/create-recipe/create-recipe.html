@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe/create-recipe/create-recipe.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% include 'header/header.html' %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-12" style="display: flex; align-items: center;">
+            <a type="button" style="margin-right: 1rem;" href="{{ url_for('receita.index') }}">Voltar</a>
+            <h1>Criar receita</h1>
+        </div>
+    </div>
+    <form method="POST">
+        <div class="row">
+            <div class="col-12" style="margin-bottom: 1rem;">
+                <label>Nome</label>
+                <input class="form-control" type="text" id="name" name="nome" placeholder="Nome da receita">
+            </div>
+
+            <div class="col-12" style="margin-bottom: 1rem;">
+                <label>Ingredientes</label>
+                {% if data.stored_ingredients %}
+                    
+                        
+                            {% for ingredient in data.stored_ingredients %}
+                            <div class="ingredient-item" style="display: flex; align-items: center; justify-content: space-between;">
+                                <input type="checkbox" id="{{ ingredient.id }}" name="escolher_ingrediente">
+    
+                                <div class="ingredient-name">
+                                    <label>Ingrediente</label>
+                                    <input class="form-control" type="text" id="{{ ingredient.name }}"
+                                           value="{{ ingredient.name }}" name="nome_ingrediente" disabled>
+                                </div>
+                                <div class="ingredient-quantity">
+                                    <label>Quantidade</label>
+                                    <input class="form-control" type="text" id="{{ ingredient.id }}_quantity" name="quantidade_ingrediente">
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                    
+                {% endif %}
+                
+            </div>
+
+            <div class="col-12" style="margin-bottom: 1rem;">
+                <label>Preparação</label>
+                <textarea class="form-control" rows="8" type="text" id="steps" name="etapas" placeholder="Exemplo: 1 - Misturar ovos"></textarea>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="button submit-button" style="width: 100%;">Criar</button>
+            </div>
+        </div>
+    </form>
+</main>
+
+{% include 'footer/footer.html' %}
+</body>
+</html>
