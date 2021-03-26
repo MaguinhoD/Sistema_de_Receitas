@@ -30,6 +30,7 @@
 - git pull
 
 ## Inicializando ambiente virtual
+- pip install venv ( caso não tenha a biblioteca venv instalada)
 - python -m venv lib
 - lib\Scripts\activate
  
@@ -48,11 +49,11 @@ MARIA_DATABASE=Receitas
  MARIA_PASSWORD=123456                                                                                                                                                             
 - A primeira vez em que rodar o código digite:
 
-python app.py init_db
+python wsgi.py init_db
 
 - Nas próximas vezes não é necessario iniciar o banco de dados:
 
-python app.py
+python wsgi.py
 
 - Assim que aparecer a mensagem, é só acessar o link da aplicação:
 
