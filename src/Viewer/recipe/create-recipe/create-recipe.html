@@ -51,14 +51,32 @@
                 {% endif %}
                 
             </div>
+            <div class="Categoria">
+               
+                <select id ="dropDownId"> <!-- give an id to select box-->
 
+                    <option value="">Categoria</option>
+                    <option value="bolos">Bolos</option>
+                    <option value="carnes">Carnes</option>
+                    <option value="aves">Aves</option>
+                    <option value="mar">Frutos do Mar</option>
+                    <option value="saladas">Saladas</option>
+                    <option value="sopas">Sopas</option>
+                    <option value="massas">Massas</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="doces">Doces</option>
+                    <option value="lanches">Lanches</option>
+                    
+                </select>
+                
+            </div>
             <div class="col-12" style="margin-bottom: 1rem;">
                 <label>Preparação</label>
                 <textarea class="form-control" rows="8" type="text" id="steps" name="etapas" placeholder="Exemplo: 1 - Misturar ovos"></textarea>
             </div>
 
             <div class="col-12">
-                <button type="submit" class="button submit-button" style="width: 100%;">Criar</button>
+                <button type="submit" class="button submit-button" onclick="create()" style="width: 100%;">Criar</button>
             </div>
         </div>
     </form>
