@@ -34,11 +34,11 @@ def get_recipe_by_id(id):
     return render_template('recipe/edit-recipe/edit-recipe.html', data={'recipe': recipe})
 
 
-@receitabp.route('/pesquisa/<string>')
-def get_recipe_by_category(a):
+@receitabp.route('/pesquisa/<nome>')
+def get_recipe_by_category(nome):
     recipes = get_recipes()
-    recipe = find_recipecategory(recipes,a)
-    return render_template('recipe/edit-recipe/edit-recipe.html', data={'recipe': recipe})
+    recipe = find_recipecategory(recipes,nome)
+    return render_template('recipe/recipe.html',title='Receitas', data={'recipes': recipe})
 
 
 @receitabp.route('/getRecipes', methods=['GET'])
@@ -47,7 +47,7 @@ def get_recipes():
         {
             'id': 1,
             'name': 'Bolo de fubá',
-            'category':'Bolo',
+            'category':'bolo',
             'ingredients': {
                 'Trigo': '3 xícaras',
                 'Ovo': '3 xícaras',
@@ -60,7 +60,7 @@ def get_recipes():
         {
             'id': 2,
             'name': 'Bolo de chocolate',
-            'category':'Bolo',
+            'category':'bolo',
             'ingredients': {
                 'Trigo': '3 xícaras',
                 'Ovo': '3 xícaras',
@@ -73,7 +73,7 @@ def get_recipes():
         {
             'id': 3,
             'name': 'Peixe ensopado',
-            'category':'Frutos do Mar',
+            'category':'mar',
             'ingredients': {
                 'Peixe':'2kg'
             },
@@ -91,7 +91,8 @@ def find_recipe(recipe_list, recipe_id):
             return recipe
 
 def find_recipecategory(recipe_list, recipe_category):
-    
-    for recipe in recipe_list:
+    lista=[]
+    for recipe in recipe_list: 
         if recipe['category'] == recipe_category:
-            return recipe
+            lista.append(recipe)
+    return lista    
