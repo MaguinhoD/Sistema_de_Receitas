@@ -12,8 +12,8 @@ from src.Controller.ingredientesController import ingredientebp, get_ingredients
 
 
 from src.Model.receitaModel import db as receita_db
-from src.Model.IngredienteModel import db as ingrediente_db
-from src.Model.IngredientedaReceitaModel import db as ingredientereceita_db
+from src.Model.ingredienteModel import db as ingrediente_db
+
 
 
 
@@ -38,7 +38,7 @@ try:
     
     receita_db.init_app(app)
     ingrediente_db.init_app(app)
-    ingredientereceita_db.init_app(app)
+
 
     app.wsgi_app = ProxyFix(app.wsgi_app)
 
@@ -64,7 +64,7 @@ def init_database(appFlask):
         
         receita_db.create_all()
         ingrediente_db.create_all()
-        ingredientereceita_db.create_all()
+       
 
 
 @app.route('/')

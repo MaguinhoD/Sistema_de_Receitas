@@ -6,7 +6,8 @@ from sqlalchemy.exc import SQLAlchemyError
 
 
 from src.Controller.ingredientesController import get_ingredients
-
+from src.Model.receitaModel import Receita as ReceitaModel
+from src.Model.receitaModel import ingrediente_receita as IngReceitaModel
 
 receitabp = Blueprint('receita', __name__, url_prefix='/receitas')
 
@@ -22,9 +23,41 @@ def create_recipe():
     if request.method == 'POST':
         name = request.form.get('name')
         ingredients = request.form.get('ingredients')
-
+    recipes = get_recipes()
     stored_ingredients = get_ingredients()
-    return render_template('recipe/create-recipe/create-recipe.html', data={'stored_ingredients': stored_ingredients})
+    return render_template('recipe/create-recipe/create-recipe.html', data={'stored_ingredients': stored_ingredients, 'recipes':recipes})
+
+
+@receitabp.route('/createrecipe', methods=['POST', 'GET'])
+def createrecipe():
+    try:
+
+        db = SQLAlchemy(current_app)
+
+        obj = request.json
+        newReceita = ReceitaModel(name=obj['name'],category=obj['categoria'], steps=obj['steps'])
+        
+        with current_app.app_context():
+            db.session.add(newReceita)
+            db.session.commit()
+
+        for x in obj['ingredientes']:
+            ingrediente_recipe =  IngReceitaModel(id_receita=recipe.id, id_ing=x['id_ingrediente'], qtd=x['quantidade'] )
+
+        with current_app.app_context():
+            db.session.add(ingrediente_recipe)
+            db.session.commit() 
+
+        res = json.dumps({'id': _id})
+        return Response(res, mimetype='application/json', status=200)
+
+    except SQLAlchemyError as error:
+        res = json.dumps({"Erro": str(error.__dict__['orig'])})
+        return Response(res, mimetype='application/json', status=500)
+    
+    except Exception as error:
+        res = json.dumps({"Erro": str(error)})
+        return Response(res, mimetype='application/json', status=500)
 
 
 @receitabp.route('/edit/<id>')
@@ -43,47 +76,20 @@ def get_recipe_by_category(nome):
 
 @receitabp.route('/getRecipes', methods=['GET'])
 def get_recipes():
-    return [
-        {
-            'id': 1,
-            'name': 'Bolo de fubá',
-            'category':'bolo',
-            'ingredients': {
-                'Trigo': '3 xícaras',
-                'Ovo': '3 xícaras',
-                'Oléo': '1 xícara',
-                'Fubá': '1 xícara'
-            },
-            'steps': '1 - Misturar os ingredientes, 2 - Bater a massa, 3- Assar',
-            'created-at': '10/03/2021'
-        },
-        {
-            'id': 2,
-            'name': 'Bolo de chocolate',
-            'category':'bolo',
-            'ingredients': {
-                'Trigo': '3 xícaras',
-                'Ovo': '3 xícaras',
-                'Oléo': '1 xícara',
-                'Chocolate': '1 xícara',
-            },
-            'steps': '1 - Misturar os ingredientes, 2 - Bater a massa, 3- Assar',
-            'created-at': '10/03/2021'
-        },
-        {
-            'id': 3,
-            'name': 'Peixe ensopado',
-            'category':'mar',
-            'ingredients': {
-                'Peixe':'2kg'
-            },
-            'steps': '1 - Cozinhar o peixe, 2 - Colocar os ingredientes',
-            'created-at': '10/03/2021'
-        }
-       
-    ]
+    try:
+      
 
+        allrecipe = ReceitaModel.query.all()
 
+        return allrecipe
+        
+    except:
+        db = SQLAlchemy(current_app)
+
+        allrecipe = ReceitaModel.query.all()  
+        return Response(res, mimetype='application/json', status=200)
+    
+  
 def find_recipe(recipe_list, recipe_id):
     recipe_id = int(recipe_id)
     for recipe in recipe_list:
