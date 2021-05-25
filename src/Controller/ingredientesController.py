@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from flask.helpers import url_for
 
 ingredientebp = Blueprint('ingrediente', __name__, url_prefix='/ingredientes')
 
@@ -12,7 +13,11 @@ def index():
 @ingredientebp.route('/create', methods=['GET', 'POST'])
 def create_ingredients():
     if request.method == 'POST':
-        ingredients = request.form.get('ingredients')
+        ingredients = Ingrediente(request.form.get('ingredients'))
+        db.session.add(ingredients)
+        db.session.commit()
+        return redirect(url_for("ingredients"))
+        
     return render_template('ingredient/create-ingredient/create-ingredient.html', title='Adicionar ingredientes')
 
 
