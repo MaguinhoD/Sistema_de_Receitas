@@ -8,10 +8,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from src.Controller.ingredientesController import get_ingredients
 from src.Model.receitaModel import Receita as ReceitaModel
 from src.Model.receitaModel import ingrediente_receita as IngReceitaModel
-<<<<<<< HEAD
-=======
 from src.Model.receitaModel import Ingrediente as ingredienteModel
->>>>>>> entrega_2
 
 receitabp = Blueprint('receita', __name__, url_prefix='/receitas')
 

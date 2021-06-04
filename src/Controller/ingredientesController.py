@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-from flask import Blueprint, render_template, request
-from flask.helpers import url_for
-=======
 import json
 
 from flask import Blueprint, render_template, request, current_app, Response
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import SQLAlchemyError
->>>>>>> entrega_2
 
 ingredientebp = Blueprint('ingrediente', __name__, url_prefix='/ingredientes')
 
