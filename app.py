@@ -1,11 +1,11 @@
 import sys 
 
-from src.main import app, init_database
+from src.Main import app, init_database
 
 
 if __name__ == "__main__":
 
     if 'init_db' in sys.argv:
-        init_database(app)
+        init_database()
 
     app.run(debug=False)

@@ -1,13 +1,5 @@
 
-.card-wrapper {
-    display: flex;
-    flex-direction: column;
-}
 
-.card-wrapper .card {
-    min-width: 220px;
-    margin-bottom: 15px;
-}
 .separador{
     width: 100%;
     height: 0;
@@ -17,6 +9,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    max-width: 500px;
+    padding-top: 0;
     word-wrap: break-word;
     background-color: #5856b6;
     border: 1px solid rgba(0,0,0,.125);
@@ -26,15 +20,25 @@
 }
 
 .card-title {
-    padding: .75rem 1.25rem;
+    padding: .2rem 2rem;
     margin-bottom: 0;
     background-color: #f7f7f7;
     border-bottom: 1px solid rgba(0,0,0,.125);
     background-color: #1f1be9;
+    
+    
 }
 
 .card-content {
-    padding: 1.25rem;
+    
+    padding: 0rem 2rem;
+  
+    
+}
+.ingredients{
+    margin-top: 0;
+    margin-bottom: 0;
+  
 }
 
 h4 {
@@ -44,6 +48,10 @@ h4 {
 @media (min-width: 576px) {
     .card-wrapper {
         flex-flow: row wrap;
+        font-size: 1.8rem;
+        flex-direction: column;
+        display: flex;
+        
     }
 
     .card-wrapper .card {
@@ -52,5 +60,20 @@ h4 {
         flex-direction: column;
         margin-right: 15px;
         margin-left: 15px;
+        
     }
+}
+
+.container{
+    margin-bottom: 100px;
+}
+
+.ingrediente_nome{
+
+    text-decoration:solid;
+    font-size: 1.8rem;
+}
+
+p{
+    font-size: 1.5rem;
 }

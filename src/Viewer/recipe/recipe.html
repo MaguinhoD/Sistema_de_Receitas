@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe/recipe.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='utils/utils.css') }}">
     {% endblock %}
+    <script src="{{ url_for('static', filename='recipe/recipe.js') }}"></script>
 </head>
 <body>
 {% include 'header/header.html' %}
@@ -20,7 +21,7 @@
     <div class="row">
         <div class="col-12" style="display: flex; align-items: center; justify-content: space-between;">
             <h1>{{ title }}</h1>
-            <a href="{{ url_for('receita.create_recipe') }}">Criar receita</a>
+            <a href="{{ url_for('receita.criarreceita') }}">Criar receita</a>
         </div>
     </div>
     <div class="row">
@@ -33,7 +34,7 @@
                                 <h3>{{ recipe.name }}</h4>
                                 <h5> Categoria: {{recipe.category}}</h5>
                                 <div>
-                                    <a>Remover</a> |
+                                    <a><button type="button" class="button" onclick="deleteObj('{{ recipe.id }}')">Remover</button></a> |
                                     <a href="/receitas/edit/{{ recipe.id }}">Editar</a>
                                 </div>
                             </div>
@@ -41,8 +42,8 @@
                                 <div class="ingredients">
                                     <h5>Ingredientes</h5>
                                     {% if recipe.ingredients %}
-                                        {% for key, value in recipe.ingredients.items() %}
-                                            <p>{{ key }}: {{ value }}</p>
+                                        {% for ingrediente in recipe.ingredients %}
+                                            <p>{{ ingrediente.name}}</p>
                                         {% endfor %}
                                     {% endif %}
                                 </div>

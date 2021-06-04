@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-
+    <script src="{{ url_for('static', filename='recipe/edit-recipe/edit-recipe.js') }}"></script>
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe/edit-recipe/edit-recipe.css') }}">
     {% endblock %}
@@ -23,28 +23,51 @@
         <div class="row">
             <div class="col-12" style="margin-bottom: 1rem;">
                 <label>Nome</label>
-                <input class="form-control" type="text" id="name" name="nome" placeholder="Nome da receita" value="{{ data.recipe.name }}">
+                <input class="form-control" type="text" id="recipe_name" name="nome" placeholder="Nome da receita" value="{{ data.recipe.name }}">
             </div>
 
             <div class="col-12" style="margin-bottom: 1rem;">
                 <label>Ingredientes</label>
-                {% if data.recipe.ingredients %}
-                    {% for key, value in data.recipe.ingredients.items() %}
-                        <div class="ingredient-item" style="display: flex; align-items: center; justify-content: space-between;">
-                            <input type="checkbox" id="recipe_id" name="escolher_ingrediente">
+                
+            </div>
+            {% if data.ingredients %}
+                   
+                               
+            <select id ="dropDownIng">
+                {% for ingredient in data.ingredients %}
+                <option value="{{ ingredient.name}}" id="{{ ingredient.id }}">{{ ingredient.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label>Quantidade</label>
+            <input class="form-control" type="text"  id="qtd_ingrediente">
+            
+            <button  class="form-btn" value="Adicionar" type="button" name="Adicionar"  id="adding"  onclick="Addingrediente()">  Adicionar </button>  
 
-                            <div class="ingredient-name">
-                                <label>Ingrediente</label>
-                                <input class="form-control" type="text" id="{{ key }}"
-                                       value="{{ key }}" name="nome_ingrediente" disabled>
-                            </div>
-                            <div class="ingredient-quantity">
-                                <label>Quantidade</label>
-                                <input class="form-control" type="text" id="{{ value }}_quantity" name="quantidade_ingrediente" value="{{ value }}">
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
+{% endif %}
+
+            <div id='listaing'> </div> 
+
+
+
+            <div class="Categoria">
+               
+                <select id ="dropDownCat"> <!-- give an id to select box-->
+
+                    <option value="">Categoria</option>
+                    <option value="bolos">Bolos</option>
+                    <option value="carnes">Carnes</option>
+                    <option value="aves">Aves</option>
+                    <option value="mar">Frutos do Mar</option>
+                    <option value="saladas">Saladas</option>
+                    <option value="sopas">Sopas</option>
+                    <option value="massas">Massas</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="doces">Doces</option>
+                    <option value="lanches">Lanches</option>
+                    
+                </select>
+                
             </div>
 
             <div class="col-12" style="margin-bottom: 1rem;">
@@ -53,8 +76,8 @@
             </div>
 
             <div class="col-12">
-                <button type="submit" class="button submit-button" style="width: 100%;">Editar</button>
-            </div>
+                <button type="submit" class="button submit-button" onclick="create()" style="width: 100%;">Salvar</button>
+            </div>>
         </div>
     </form>
 </main>

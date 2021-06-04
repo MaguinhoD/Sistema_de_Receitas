@@ -8,6 +8,9 @@
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ingredient/ingredient.css') }}">
     {% endblock %}
+    {% block js %}
+    <script src="{{ url_for('static', filename='ingredient/ingredient.js') }}"></script>
+    {% endblock %}
 </head>
 <body>
 {% include 'header/header.html' %}
@@ -29,7 +32,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Criado em</th>
+                   
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -40,10 +43,10 @@
                         <tr>
                             <td>{{ ingredient.id }}</td>
                             <td>{{ ingredient.name }}</td>
-                            <td>{{ ingredient.created_at }}</td>
+                           
                         <td>
-                              <a>Remover</a> |
-                            <a href="{{ url_for('ingrediente.update_ingredients') }}">Editar</a>
+                            <button type="button" class="button" onclick="deleteObj('{{ ingredient.id }}')">Remover</button>
+                            <button type="button" class="button" onclick="window.location.href = '/ingredientes/edit/{{ ingredient.id }}'" >Editar</button>
                         </td>
                         </tr>
                     {% endfor %}

@@ -38,8 +38,8 @@
                                     <div class="ingredients">
                                         <h5>Ingredientes</h5>
                                         {% if recipe.ingredients %}
-                                            {% for key, value in recipe.ingredients.items() %}
-                                                <p>{{ key }}: {{ value }}</p>
+                                            {% for ingredient in recipe.ingredients %}
+                                                <p>{{ingredient.name}}</p>
                                             {% endfor %}
                                         {% endif %}
                                     </div>
@@ -63,16 +63,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="coling">
                 {% if data.ingredients %}
                     {% for ingredient in data.ingredients %}
-                        <span class="label label-colorful">{{ ingredient.name }}</span>
+                        <div class="ingrediente_nome">{{ ingredient.name }} </div>
                     {% endfor %}
                 {% endif %}
             </div>
         </div>
     </main>
+    
 
     {% include 'footer/footer.html' %}
+
 </body>
 </html>
