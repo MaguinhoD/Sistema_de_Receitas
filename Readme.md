@@ -27,14 +27,16 @@ Video 2 - https://youtu.be/CjNLXmYCQxk
 - Clonar e atualizar repositório
 - git clone https://github.com/MaguinhoD/Sistema_de_Receitas
 
-- cd Sistema_de_Receita
-- git checkout Entrega_1
+- cd Sistema_de_Receitas
+- git checkout master
 - git pull
 
 ## Inicializando ambiente virtual
+- (caso esteja em um linux, apt-get install python-pip para instalar a biblioteca pip)
 - pip install venv ( caso não tenha a biblioteca venv instalada)
 - python -m venv lib
 - lib\Scripts\activate
+- lib\bin\activate (caso esteja em um linux)
  
 ## Instalação das dependências
 
