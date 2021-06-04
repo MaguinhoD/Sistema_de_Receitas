@@ -7,3 +7,7 @@ venv/
 /lib/
 /Lib/
 Lib/
+.idea
+idea
+.gitignore
+gitignore
