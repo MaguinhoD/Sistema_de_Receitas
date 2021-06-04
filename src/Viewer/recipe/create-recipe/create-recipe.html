@@ -10,7 +10,6 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe/create-recipe/create-recipe.css') }}">
     {% endblock %}
 
-    
 
 </head>
 <body>
@@ -23,33 +22,40 @@
             <h1>Criar receita</h1>
         </div>
     </div>
-   
+    
+    
+
     <form method="POST">
         <div class="row">
             <div class="col-12" style="margin-bottom: 1rem;">
                 <label>Nome</label>
-                <input class="form-control" type="text" id="name" name="nome" placeholder="Nome da receita">
+                <input class="form-control" type="text" id="recipe_name" name="nome" placeholder="Nome da receita">
             </div>
 
             <div class="col-12" style="margin-bottom: 1rem;">
                 <label>Ingredientes</label>
-                {% if data.stored_ingredients %}
+                {% if data.ingredients %}
                    
                                
                                     <select id ="dropDownIng">
-                                        {% for ingredient in data.stored_ingredients %}
+                                        {% for ingredient in data.ingredients %}
                                         <option value="{{ ingredient.name}}" id="{{ ingredient.id }}">{{ ingredient.name }}</option>
                                         {% endfor %}
                                     </select>
                                
                                     <label>Quantidade</label>
-                                    <input class="form-control" type="text"  name="qtd_ingrediente">
+                                    <input class="form-control" type="text"  id="qtd_ingrediente">
                                     
-                                    <input  class="form-btn" value="Adicionar" type="button" name="Adicionar"  id="adding"  onclick="Adicionaringrediente()" >    
+                                    <button  class="form-btn" value="Adicionar" type="button" name="Adicionar"  id="adding"  onclick="Addingrediente()">  Adicionar </button>  
                      
                 {% endif %}
                 
+
+                
             </div>
+
+                      
+            <div id='listaing'> </div> 
            
 
             <div class="Categoria">

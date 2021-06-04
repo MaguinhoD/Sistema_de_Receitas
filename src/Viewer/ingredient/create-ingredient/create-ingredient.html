@@ -9,6 +9,9 @@
         <link rel="stylesheet" type="text/css"
               href="{{ url_for('static', filename='ingredient/create-ingredient/create-ingredient.css') }}">
     {% endblock %}
+    {% block js %}
+    <script src="{{ url_for('static', filename='ingredient/create-ingredient/create-ingredient.js') }}"></script>
+    {% endblock %}
 </head>
 <body>
 {% include 'header/header.html' %}
@@ -20,16 +23,25 @@
             <h1>Adicionar ingredientes</h1>
         </div>
     </div>
-    <form method="POST">
+    
         <div class="row">
             <div class="col-12" style="display: flex; align-items: center;">
                 <input type="text" class="form-control" placeholder="Nome do ingrediente" id="ingredient_id" style="margin: 10px;">
-                <button type="button" class="button submit-button">Adicionar</button>
+                <button type="button" class="button submit-button" onclick="criarIngrediente()">Adicionar</button>
             </div>
         </div>
-
-        
-    </form>
+        <div class="row">
+            <div class="col-12">
+                {% if data.ingredients %}
+                <h4>Ingredientes cadastrados</h4>
+                {% for ingredient in data.ingredients %}
+                <pingredient id="listIngredients">{{ingredient.name}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+               
+   
 </main>
 
 {% include 'footer/footer.html' %}

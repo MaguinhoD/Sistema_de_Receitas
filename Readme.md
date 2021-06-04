@@ -5,10 +5,9 @@
 
 ## Objetivo
 - Desenvolver um sistema Web para criação de receitas em Python
-
-## Link para tutorial de video
-- https://youtu.be/lzddPrCsVRQ
-
+## Videos apresentado o projeto
+Video 1 - https://youtu.be/lzddPrCsVRQ
+Video 2 - https://youtu.be/CjNLXmYCQxk
 ## Tecnologias
 - Mariadb
 - Flask
